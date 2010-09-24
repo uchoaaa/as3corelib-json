@@ -8,20 +8,19 @@ Usage
 
 Something like this:
 
-`
-var hashInHash:Object = new Object();
-hashInHash.foo = 'bar'
+	var hashInHash:Object = new Object();
+	hashInHash.foo = 'bar'
+	
+	var hash:Object = new Object();
+	hash.key = 'value';
+	hash.internalHash = hashInHash;
+	
+	var jsonAsString:String = JSON.encode(hash);	//{"internalHash":{"foo":"bar"},"key":"value"}
+	var hashAgain:Object  	= JSON.decode(jsonAsString);
 
-var hash:Object = new Object();
-hash.key = 'value';
-hash.internalHash = hashInHash;
 
-var jsonAsString:String = JSON.encode(hash);	//{"internalHash":{"foo":"bar"},"key":"value"}
-var hashAgain:Object  	= JSON.decode(jsonAsString);
-`
 
-License
-------------
+#### License
 
 An ActionScript 3 Library that contains ONLY classes working with JSON in ActionScript 3.
 
