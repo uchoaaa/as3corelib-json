@@ -8,6 +8,8 @@ Usage
 
 Something like this:
 
+	//import the bin/as3corelib-json.swc on your project
+	
 	var hashInHash:Object = new Object();
 	hashInHash.foo = 'bar'
 	
@@ -20,7 +22,8 @@ Something like this:
 
 
 
-#### License
+License
+-------
 
 An ActionScript 3 Library that contains ONLY classes working with JSON in ActionScript 3.
 
