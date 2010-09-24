@@ -1,0 +1,37 @@
+<!--
+ To build as3httpclientlib.swc, use
+
+   compc -load-config=build-swc.xml
+
+ That is all.
+-->
+<flex-config>
+  <compiler>
+    <external-library-path>
+      <path-element>${flexlib}/libs/player/10.0/playerglobal.swc</path-element>
+    </external-library-path>
+    
+    <source-path>
+      <path-element>src</path-element>
+    </source-path>
+  </compiler>
+
+  <!-- Classes -->
+  <include-classes>
+	<class>com.adobe.serialization.json.JSON</class>
+	<class>com.adobe.serialization.json.JSONDecoder</class>
+	<class>com.adobe.serialization.json.JSONEncoder</class>
+	<class>com.adobe.serialization.json.JSONParseError</class>
+	<class>com.adobe.serialization.json.JSONToken</class>
+	<class>com.adobe.serialization.json.JSONTokenizer</class>
+	<class>com.adobe.serialization.json.JSONTokenType</class>
+  </include-classes>
+
+  <metadata>
+    <creator>Adobe Systems Incorporated</creator>
+    <description>As3 implementation of JSON. Extract from as3corelib. http://github.com/mikechambers/as3corelib</description>
+    <language>EN</language>
+    <title>as3CoreLib ~ JSON</title>
+  </metadata>
+  <output>bin/as3corelib-json.swc</output>
+</flex-config>

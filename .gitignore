@@ -13,7 +13,6 @@ profile
 .flexProperties
 .project
 .settings
-bin/*
 bin-debug/*
 .flexLibProperties
 
