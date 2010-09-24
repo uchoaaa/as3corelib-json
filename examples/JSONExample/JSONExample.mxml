@@ -34,40 +34,36 @@ WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
 OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOURCE CODE, EVEN IF
 ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
-
-<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" xmlns="*" 
-	layout="absolute"
-	creationComplete="service.send()" viewSourceURL="srcview/index.html">
+<?xml version="1.0" encoding="utf-8"?>
+<s:WindowedApplication xmlns:fx="http://ns.adobe.com/mxml/2009" 
+					   xmlns:s="library://ns.adobe.com/flex/spark" 
+					   xmlns:mx="library://ns.adobe.com/flex/mx"
+					   creationComplete="onCreationComplete();">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
 	
-	<mx:Script>
+	<fx:Script>
 		<![CDATA[
-			import mx.collections.ArrayCollection;
-			import mx.rpc.events.ResultEvent;
 			import com.adobe.serialization.json.JSON;
-			
-			private function onJSONLoad(event:ResultEvent):void
-			{
-				var rawData:String = String(event.result);
-				var arr:Array = (JSON.decode(rawData) as Array);
+
+			protected function onCreationComplete():void {
+				var hashInHash:Object = new Object();
+				hashInHash.foo = 'bar'
 				
-				var dp:ArrayCollection = new ArrayCollection(arr);
+				var hash:Object = new Object();
+				hash.key = 'value';
+				hash.internalHash = hashInHash;
 				
-				grid.dataProvider = dp;
+				var jsonAsString:String = JSON.encode(hash);	//{"internalHash":{"foo":"bar"},"key":"value"}
+				var hashAgain:Object  	= JSON.decode(jsonAsString);
+				
+				textArea.text += jsonAsString;
 			}
+			
 		]]>
-	</mx:Script>
+	</fx:Script>
 	
-	<mx:HTTPService
-		id="service"
-		resultFormat="text"
-		url="http://weblogs.macromedia.com/mesh/mashedpotato.json"
-		result="onJSONLoad(event)" />
-	
-	<mx:DataGrid id="grid" right="10" left="10" top="10" bottom="10">
-		<mx:columns>
-			<mx:DataGridColumn headerText="Service" dataField="src"/>
-			<mx:DataGridColumn headerText="Title" dataField="title"/>
-		</mx:columns>
-	</mx:DataGrid>
-	
-</mx:Application>
+	<s:TextArea id="textArea" width="100%"/>
+
+</s:WindowedApplication>
